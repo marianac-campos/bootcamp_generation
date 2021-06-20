@@ -1,2 +1,3 @@
-# generation.java
-Atividades realizadas durante o bootcamp da Generation utilizando a linguagem Java no IDE Eclipse.
+- Metodologia SCRUM;
+- Introdução a Lógica de Programação;
+- Linguagem de Programação JAVA.
