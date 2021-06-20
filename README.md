@@ -1,4 +1,4 @@
-Este repositório contém todas as atividades e projetos realizados durante o **bootcamp da [Generation Brasil](https://brazil.generation.org)**
+Este repositório contém todas as atividades e projetos realizados durante o **bootcamp da [Generation Brasil](https://brazil.generation.org)**.
 Para facilitar a aprendizagem, houve a separação do conteúdo em três partes nomeados de bloco 1, bloco 2 e bloco 3 pelo qual em cada um era desenvolvido uma habilidade diferente.  
 
 #### SOBRE CADA BLOCO 
