@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
+//Creating an entity
+
 @Entity
 @Table(name = "postagem")
 public class Postagem {
@@ -30,10 +32,10 @@ public class Postagem {
 	@Size(min=15, max=500, message="Este campo é obrigatório!")
 	private String texto;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP) //TIMESTAMP = Go get the system's time
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 	
-	//getters and setters
+	//Getters and setters
 	public long getId() {
 		return id;
 	}

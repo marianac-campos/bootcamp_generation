@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import br.org.generation.blogpessoal.model.Postagem;
 
+//Database communication
+
 @Repository
 public interface PostagemRepositorio extends JpaRepository<Postagem, Long>{
-	public List<Postagem> findAllByTituloContainingIgnoreCase(String titulo);
+	public List<Postagem> findAllByTituloContainingIgnoreCase(String titulo); //make an appointment
 }
