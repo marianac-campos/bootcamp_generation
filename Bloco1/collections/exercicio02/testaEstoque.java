@@ -1,9 +1,9 @@
-package exercicio02;
+package collections.exercicio02;
 
 	import java.util.ArrayList;
 	import java.util.Scanner;
 
-	public class TestaEstoque {
+	public class TestaEstoque{
 
 		public static void main(String[] args) {
 

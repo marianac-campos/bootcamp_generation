@@ -1,4 +1,4 @@
-package exercicio02;
+package collections.exercicio02;
 
 public class estoqueLoja {
 	
@@ -7,7 +7,7 @@ public class estoqueLoja {
 	private String marcaProduto;
 	private String precoProduto;
 	
-	public Estoque (String produto, String codProduto, String marcaProduto, String precoProduto) {
+	public void Estoque (String produto, String codProduto, String marcaProduto, String precoProduto) {
 		super();
 		this.produto = produto;
 		this.codProduto = codProduto;
