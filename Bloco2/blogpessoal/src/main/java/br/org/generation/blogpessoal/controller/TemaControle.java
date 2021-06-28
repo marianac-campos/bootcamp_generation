@@ -15,51 +15,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.generation.blogpessoal.model.Postagem;
-import br.org.generation.blogpessoal.repository.PostagemRepositorio;
-
-//Receive requests and use the appropriate method for each one
+import br.org.generation.blogpessoal.model.Tema;
+import br.org.generation.blogpessoal.repository.TemaRepositorio;
 
 @RestController
-@RequestMapping("/postagens") //End-point 
-@CrossOrigin("*") //Define where the address will come from
-public class PostagemControle {
-
+@RequestMapping("/tema")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class TemaControle {
+	
 	//dependency injection
 	@Autowired //Transfer responsibility to Spring for instantiating the object
-	public PostagemRepositorio repositorio;
+	public TemaRepositorio repositorio;
 	
 	@GetMapping
-	public ResponseEntity<List<Postagem>> GetAll(){ 
+	public ResponseEntity<List<Tema>> GetAll(){ 
 		return ResponseEntity.ok(repositorio.findAll()); 
 	}
 	
 	//Get for search by ID using Lambda
 	@GetMapping("/{id}") //End-point search ID
-	public ResponseEntity<Postagem> GetById(@PathVariable long id){
+	public ResponseEntity<Tema> GetById(@PathVariable long id){
 		return repositorio.findById(id)
 			.map(resp -> ResponseEntity.ok(resp))
 			.orElse(ResponseEntity.notFound().build());
 	}
 	
-	//Get for search by title
-	@GetMapping("/titulo/{titulo}") //End-point search title
-	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
-		return ResponseEntity.ok(repositorio.findAllByTituloContainingIgnoreCase(titulo));
+	//Get for search by description
+	@GetMapping("/descricao/{descricao}") //End-point search description
+	public ResponseEntity<List<Tema>> GetByDescricao(@PathVariable String descricao){
+		return ResponseEntity.ok(repositorio.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
-	
-	//Create a new data 
+		
+	//Create a new theme
 	@PostMapping
-	public ResponseEntity<Postagem> post(@RequestBody Postagem postagem){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repositorio.save(postagem));
+	public ResponseEntity<Tema> post(@RequestBody Tema tema){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repositorio.save(tema));
 	}
-	
-	//Edit a data
+		
+	//Edit a theme
 	@PutMapping
-	public ResponseEntity<Postagem> put(@RequestBody Postagem postagem){
-		return ResponseEntity.status(HttpStatus.OK).body(repositorio.save(postagem));
+	public ResponseEntity<Tema> put(@RequestBody Tema tema){
+		return ResponseEntity.status(HttpStatus.OK).body(repositorio.save(tema));
 	}
-	
+		
 	//Delete the line of a ID
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id){

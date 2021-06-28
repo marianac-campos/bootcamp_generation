@@ -6,12 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 //Creating an entity
@@ -32,10 +35,16 @@ public class Postagem {
 	@Size(min=15, max=500, message="Este campo é obrigatório!")
 	private String texto;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
+	
 	@Temporal(TemporalType.TIMESTAMP) //TIMESTAMP = Go get the system's time
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 	
-	//Getters and setters
+	//GETTERS AND SETTERS
+	
+	//id
 	public long getId() {
 		return id;
 	}
@@ -43,7 +52,8 @@ public class Postagem {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	
+	//title
 	public String getTitulo() {
 		return titulo;
 	}
@@ -51,7 +61,8 @@ public class Postagem {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
+	
+	//text
 	public String getTexto() {
 		return texto;
 	}
@@ -59,7 +70,8 @@ public class Postagem {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-
+	
+	//time
 	public Date getData() {
 		return data;
 	}
@@ -67,4 +79,14 @@ public class Postagem {
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
+	//theme
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+	
 }
