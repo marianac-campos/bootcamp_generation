@@ -7,9 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import br.org.generation.blogpessoal.model.Tema;
 
-//Database communication
-
+//database communication
 @Repository
-public interface TemaRepositorio extends JpaRepository<Tema, Long>{
+public interface TemaRepositorio extends JpaRepository<Tema, Long> {
 	public List<Tema> findAllByDescricaoContainingIgnoreCase(String descricao);
 }

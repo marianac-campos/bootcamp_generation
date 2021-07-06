@@ -39,12 +39,14 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+	
 	@Temporal(TemporalType.TIMESTAMP) //TIMESTAMP = Go get the system's time
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 	
-	//GETTERS AND SETTERS
-	
-	//id
+	//get and set id
 	public long getId() {
 		return id;
 	}
@@ -53,7 +55,7 @@ public class Postagem {
 		this.id = id;
 	}
 	
-	//title
+	//get and set title
 	public String getTitulo() {
 		return titulo;
 	}
@@ -62,7 +64,7 @@ public class Postagem {
 		this.titulo = titulo;
 	}
 	
-	//text
+	//get and set text
 	public String getTexto() {
 		return texto;
 	}
@@ -71,7 +73,7 @@ public class Postagem {
 		this.texto = texto;
 	}
 	
-	//time
+	//get and set time
 	public Date getData() {
 		return data;
 	}
@@ -80,7 +82,7 @@ public class Postagem {
 		this.data = data;
 	}
 	
-	//theme
+	//get and set theme
 	public Tema getTema() {
 		return tema;
 	}
