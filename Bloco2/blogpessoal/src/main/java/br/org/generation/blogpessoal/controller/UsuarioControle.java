@@ -25,12 +25,15 @@ import br.org.generation.blogpessoal.service.UsuarioServico;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioControle {
 	
+	//dependency injection
 	@Autowired
 	private UsuarioRepositorio usuarioRepository;
 	
 	@Autowired
 	private UsuarioServico usuarioService;
 	
+	
+	//CRUDS
 	@GetMapping("/todos")
 	public ResponseEntity<List<Usuario>> getAll() {
 		return ResponseEntity.ok(usuarioRepository.findAll());
@@ -44,8 +47,8 @@ public class UsuarioControle {
 	}
 	
 	@PostMapping("/logar")
-	public ResponseEntity<ConectarUsuario> autenticationUsuario(@RequestBody Optional<ConectarUsuario> usuario) {
-		return usuarioService.logarUsuario(usuario)
+	public ResponseEntity<ConectarUsuario> autenticationUsuario(@RequestBody Optional<ConectarUsuario> usuariologin) {
+		return usuarioService.Logar(usuariologin)
 			.map(resp -> ResponseEntity.ok(resp))
 			.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}

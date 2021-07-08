@@ -3,7 +3,7 @@ package br.org.generation.blogpessoal.model;
 public class ConectarUsuario {
 	
 	private String nome;
-	private String usuario;
+	private String login;
 	private String senha;
 	private String token;
 
@@ -18,12 +18,12 @@ public class ConectarUsuario {
 	}
 	
 	//get and set user 
-	public String getUsuario() {
-		return usuario;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 	//get and set password 

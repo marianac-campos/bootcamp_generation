@@ -1,5 +1,6 @@
 package br.org.generation.blogpessoal.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,5 +11,10 @@ import br.org.generation.blogpessoal.model.Usuario;
 //database communication
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
-	public Optional<Usuario> findByUsuario(String usuario);
+	
+	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
+	
+	public Optional<Usuario> findByLogin(String login);
+	
+	public Usuario findByNome(String nome);
 }

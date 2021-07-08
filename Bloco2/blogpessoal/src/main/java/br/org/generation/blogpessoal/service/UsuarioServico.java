@@ -1,6 +1,8 @@
 package br.org.generation.blogpessoal.service;
 
 import java.nio.charset.Charset;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Optional;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -20,23 +22,37 @@ public class UsuarioServico {
 	@Autowired
 	private UsuarioRepositorio usuarioRepository;
 	
-	//create one user
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
-		 
-		if(usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
-			return null;
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
+		// Check if the login (email) exists
+		if(usuarioRepository.findByLogin(usuario.getLogin()).isPresent())
+			throw new ResponseStatusException(
+			          	HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
+
+		//Check if the user is of legal age
+		int idade = Period.between(usuario.getDataNascimento(), LocalDate.now()).getYears();
+		
+		if(idade < 18)
+			throw new ResponseStatusException(
+						HttpStatus.BAD_REQUEST, "Usuário menor de 18 anos!", null);
+			
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
-		
+
 		return Optional.of(usuarioRepository.save(usuario));
 	}
+
+	public Optional<Usuario> atualizarUsuario(Usuario usuario){
 	
-	//update password user 
-	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
-		
 		if(usuarioRepository.findById(usuario.getId()).isPresent()) {
+		
+			int idade = Period.between(usuario.getDataNascimento(), LocalDate.now()).getYears();
+			
+			if(idade < 18)
+				throw new ResponseStatusException(
+							HttpStatus.BAD_REQUEST, "Usuário menor de 18 anos", null);
 			
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			
@@ -44,33 +60,35 @@ public class UsuarioServico {
 			usuario.setSenha(senhaEncoder);
 			
 			return Optional.of(usuarioRepository.save(usuario));
+		
 		}else {
 			
 			throw new ResponseStatusException(
 					HttpStatus.NOT_FOUND, "Usuário não encontrado!", null);
-		}}
-	
-	//login with user
-	public Optional<ConectarUsuario> logarUsuario(Optional<ConectarUsuario> usuarioLogin) {
-		
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
-		
-		if(usuario.isPresent()) {
-			if(encoder.matches(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
-				
-				String auth = usuarioLogin.get().getUsuario() + ":" + usuarioLogin.get().getSenha();
-				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
-				String authHeader = "Basic" + new String(encodedAuth);
-				
-				usuarioLogin.get().setToken(authHeader);
-				usuarioLogin.get().setNome(usuario.get().getNome());
-				usuarioLogin.get().setSenha(usuario.get().getSenha());
-				
-				return usuarioLogin;
-			}
-		} 
-			return null;
+		}
 	}
 	
+	public Optional<ConectarUsuario> Logar(Optional<ConectarUsuario> usuarioLogin) {
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Optional<Usuario> usuario = usuarioRepository.findByLogin(usuarioLogin.get().getLogin());
+
+		if (usuario.isPresent()) {
+			
+			if (encoder.matches(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
+
+				String auth = usuarioLogin.get().getLogin() + ":" + usuarioLogin.get().getSenha();
+				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+				String authHeader = "Basic " + new String(encodedAuth);
+
+				usuarioLogin.get().setToken(authHeader);				
+				usuarioLogin.get().setNome(usuario.get().getNome());
+				usuarioLogin.get().setSenha(usuario.get().getSenha());
+
+				return usuarioLogin;
+			}
+		}
+		throw new ResponseStatusException(
+				HttpStatus.UNAUTHORIZED, "Usuário ou senha inválidos!", null);
+	}
 }
