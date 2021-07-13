@@ -10,16 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-//Creating an entity
-
-@Entity
+@Entity //Creating an entity
 @Table(name = "postagem")
 public class Postagem {
 	
@@ -27,13 +24,19 @@ public class Postagem {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
-	@Size(min=5, max=100, message="Este campo é obrigatório!")
+	@NotEmpty(message = "O atributo título é obrigatório!")
+	@Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 05 e no máximo 100 caracteres!")
 	private String titulo;
 	
-	@NotNull
-	@Size(min=15, max=500, message="Este campo é obrigatório!")
+	@NotEmpty(message="O atributo texto é obrigatório!")
+	@Size(min=15, max=500, message = "O atributo texto deve conter no mínimo 15 e no máximo 500 caracteres!")
 	private String texto;
+	
+	@Temporal(TemporalType.TIMESTAMP) //TIMESTAMP = Go get the system's time
+	private Date data = new java.sql.Date(System.currentTimeMillis());
+	
+	@PositiveOrZero
+	private int curtidas;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
@@ -43,16 +46,9 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
 	
-	@Temporal(TemporalType.TIMESTAMP) //TIMESTAMP = Go get the system's time
-	private Date data = new java.sql.Date(System.currentTimeMillis());
-	
-	//get and set id
+	//get id
 	public long getId() {
 		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 	
 	//get and set title
@@ -73,13 +69,18 @@ public class Postagem {
 		this.texto = texto;
 	}
 	
-	//get and set time
+	//get time
 	public Date getData() {
 		return data;
 	}
+	
+	//get and set likes
+	public int getCurtidas() {
+		return curtidas;
+	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setCurtidas(int curtidas) {
+		this.curtidas = curtidas;
 	}
 	
 	//get and set theme
@@ -90,5 +91,13 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	
+		
+	//get and set user
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }

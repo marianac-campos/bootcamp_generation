@@ -12,9 +12,11 @@ import br.org.generation.blogpessoal.model.Usuario;
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 	
+	//make an appointment
 	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 	
 	public Optional<Usuario> findByLogin(String login);
 	
 	public Usuario findByNome(String nome);
+
 }

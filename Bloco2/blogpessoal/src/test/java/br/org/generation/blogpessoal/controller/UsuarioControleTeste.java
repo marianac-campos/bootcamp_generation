@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.org.generation.blogpessoal.model.Usuario;
+import br.org.generation.blogpessoal.repository.UsuarioRepositorio;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -28,23 +29,36 @@ public class UsuarioControleTeste {
   
     @Autowired
     private TestRestTemplate testRestTemplate;
+    
+    @Autowired
+	private UsuarioRepositorio usuarioRepository;
 
     private Usuario usuario;
-    private Usuario usuarioUpdate;
+	private Usuario usuarioUpdate;
+	private Usuario usuarioAdmin;
 
     @BeforeAll
     public void start() throws ParseException {
 
-    	LocalDate dataPost = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    	//usuario = new Usuario(0L, "Administrador", "admin@email.com.br", "admin123", dataPost);
-        usuario = new Usuario(0L, "João da Silva", "joao@email.com.br", "13465278", dataPost);
-        
+    	LocalDate dataAdmin = LocalDate.parse("1990-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        usuarioAdmin = new Usuario(0L, "Administrador", "admin@email.com.br", "admin123", dataAdmin);
+
+		if(!usuarioRepository.findByLogin(usuarioAdmin.getLogin()).isPresent()) {
+
+			HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuarioAdmin);
+			testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, request, Usuario.class);
+			
+		}
+		
+		LocalDate dataPost = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        usuario = new Usuario(0L, "João da Silva dos Santos", "joao@email.com.br", "13465278", dataPost);
+
         LocalDate dataPut = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        usuarioUpdate = new Usuario(1L, "João da Silva Souza", "joao@email.com.br", "joao123", dataPut);
+        usuarioUpdate = new Usuario(2L, "João da Silva dos Santos Souza", "joao@email.com.br", "joao123", dataPut);
     }
 
-    @Disabled
     @Test
+    @Order(1)
     @DisplayName("Cadastrar Usuário!")
     public void deveRealizarPostUsuario() {
 
@@ -56,6 +70,7 @@ public class UsuarioControleTeste {
     
     
     @Test
+    @Order(2)
     @DisplayName("Listar todos os Usuários!")
     public void deveMostrarTodosUsuarios() {
         ResponseEntity<String> resposta = testRestTemplate
@@ -65,6 +80,7 @@ public class UsuarioControleTeste {
     }
     
     @Test
+    @Order(3)
     @DisplayName("Alterar Usuário!")
     public void deveRealizarPutUsuario() {
         

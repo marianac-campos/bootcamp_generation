@@ -42,12 +42,12 @@ public class UsuarioRepositorioTeste {
 
         usuario = new Usuario(0, "Fred da Silva", "frederico@email.com.br", "13465278", data);
 
-        if(usuarioRepository.findByLogin(usuario.getLogin()) != null)
-            usuarioRepository.save(usuario);
+        if(!usuarioRepository.findByLogin(usuario.getLogin()).isPresent())
+			usuarioRepository.save(usuario);
 
        	usuario = new Usuario(0, "Paulo Antunes", "paulo@email.com.br", "13465278", data);
 
-        if(usuarioRepository.findByLogin(usuario.getLogin()) != null)
+        if(!usuarioRepository.findByLogin(usuario.getLogin()).isPresent())
             usuarioRepository.save(usuario);
     }
 

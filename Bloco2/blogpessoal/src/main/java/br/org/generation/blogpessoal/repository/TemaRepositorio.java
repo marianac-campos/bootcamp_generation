@@ -10,5 +10,8 @@ import br.org.generation.blogpessoal.model.Tema;
 //database communication
 @Repository
 public interface TemaRepositorio extends JpaRepository<Tema, Long> {
+	
+	//make an appointment
 	public List<Tema> findAllByDescricaoContainingIgnoreCase(String descricao);
+
 }

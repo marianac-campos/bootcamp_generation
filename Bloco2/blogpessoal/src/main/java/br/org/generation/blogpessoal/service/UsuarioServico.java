@@ -19,17 +19,19 @@ import br.org.generation.blogpessoal.repository.UsuarioRepositorio;
 @Service
 public class UsuarioServico {
 	
+	//dependency injection
 	@Autowired
 	private UsuarioRepositorio usuarioRepository;
 	
+	//register
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 		
-		// Check if the login (email) exists
+		//check if the login (email) exists
 		if(usuarioRepository.findByLogin(usuario.getLogin()).isPresent())
 			throw new ResponseStatusException(
 			          	HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 
-		//Check if the user is of legal age
+		//check if the user is of legal age
 		int idade = Period.between(usuario.getDataNascimento(), LocalDate.now()).getYears();
 		
 		if(idade < 18)
@@ -43,11 +45,14 @@ public class UsuarioServico {
 
 		return Optional.of(usuarioRepository.save(usuario));
 	}
-
-	public Optional<Usuario> atualizarUsuario(Usuario usuario){
 	
-		if(usuarioRepository.findById(usuario.getId()).isPresent()) {
+	//change password
+	public Optional<Usuario> atualizarUsuario(Usuario usuario){
 		
+		//check if the id is present
+		if(usuarioRepository.findById(usuario.getId()).isPresent()) {
+			
+			//check if the user is of legal age
 			int idade = Period.between(usuario.getDataNascimento(), LocalDate.now()).getYears();
 			
 			if(idade < 18)
@@ -68,6 +73,7 @@ public class UsuarioServico {
 		}
 	}
 	
+	//login
 	public Optional<ConectarUsuario> Logar(Optional<ConectarUsuario> usuarioLogin) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

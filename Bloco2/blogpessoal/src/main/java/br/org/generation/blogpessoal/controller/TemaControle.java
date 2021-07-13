@@ -17,50 +17,67 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.generation.blogpessoal.model.Tema;
 import br.org.generation.blogpessoal.repository.TemaRepositorio;
+import br.org.generation.blogpessoal.service.TemaServico;
 
+//Receive requests and use the appropriate method for each one
 @RestController
 @RequestMapping("/tema")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaControle {
 	
 	//dependency injection
-	@Autowired //Transfer responsibility to Spring for instantiating the object
+	@Autowired
 	public TemaRepositorio repositorio;
+	
+	@Autowired
+	public TemaServico temaService;
 	
 	@GetMapping
 	public ResponseEntity<List<Tema>> GetAll(){ 
+		
 		return ResponseEntity.ok(repositorio.findAll()); 
 	}
 	
-	//Get for search by ID using Lambda
-	@GetMapping("/{id}") //End-point search ID
+	//CRUDS
+	@GetMapping("/{id}") //end-point search ID
 	public ResponseEntity<Tema> GetById(@PathVariable long id){
+		
 		return repositorio.findById(id)
 			.map(resp -> ResponseEntity.ok(resp))
 			.orElse(ResponseEntity.notFound().build());
 	}
-	
-	//Get for search by description
-	@GetMapping("/descricao/{descricao}") //End-point search description
+
+	@GetMapping("/descricao/{descricao}") //end-point search description
 	public ResponseEntity<List<Tema>> GetByDescricao(@PathVariable String descricao){
+		
 		return ResponseEntity.ok(repositorio.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 		
-	//Create a new theme
+	//create a new theme
 	@PostMapping
 	public ResponseEntity<Tema> post(@RequestBody Tema tema){
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(repositorio.save(tema));
 	}
 		
-	//Edit a theme
+	//edit a theme
 	@PutMapping
 	public ResponseEntity<Tema> put(@RequestBody Tema tema){
+		
 		return ResponseEntity.status(HttpStatus.OK).body(repositorio.save(tema));
 	}
 		
-	//Delete the line of a ID
+	//delete the line of a ID
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id){
+		
 		repositorio.deleteById(id);
+	}
+	
+	//search for trending topics
+	@GetMapping("/trendtopics")
+	public ResponseEntity<List<Tema>> getTrendTopics() {
+		
+		return ResponseEntity.ok(temaService.trendTopics());
 	}
 }

@@ -9,12 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
+@Entity	//Creating an entity
 @Table(name="tema")
 public class Tema {
 	
@@ -22,26 +21,22 @@ public class Tema {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
-	@Size(min=3, max=25, message="O campo 'descrição' é obrigatório!")
+	@NotEmpty(message="O atributo descrição é obrigatório!")
 	private String descricao;
 	
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL) //CascadeType.ALL will change all other objects with type "theme"
 	@JsonIgnoreProperties("tema") //We will use the @JsonIgnoreProperties annotation so that there is no recursion when getting the resources 
 	private List<Postagem> postagem;
 	
-	//GETTERS AND SETTERS
+	@Transient //note that it will not be used in the database
+	private int qtdTema;
 	
-	//id
+	//get id
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	//description
+	//get and set description
 	public String getDescricao() {
 		return descricao;
 	}
@@ -50,12 +45,21 @@ public class Tema {
 		this.descricao = descricao;
 	}
 	
-	//post
+	//get and set post
 	public List<Postagem> getPostagem() {
 		return postagem;
 	}
 
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
+	}
+	
+	//get and set theme
+	public int getQtdTema() {
+		return qtdTema;
+	}
+
+	public void setQtdTema(int qtdTema) {
+		this.qtdTema = qtdTema;
 	}
 }
