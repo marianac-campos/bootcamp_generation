@@ -1,3 +1,0 @@
-- Metodologia SCRUM;
-- Introdução a Lógica de Programação;
-- Linguagem de Programação JAVA.
