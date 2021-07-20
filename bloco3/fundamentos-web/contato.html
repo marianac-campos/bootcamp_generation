@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre em contato</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <ul id="menu">
+        <li>
+        <a href="index.html">HOME</a>
+        </li>
+        <li>
+        <a href="champs.html">CAMPEÕES</a>
+        </li>
+        <li>
+        <a href="contato.html">CONTATO</a>
+        </li>
+    </ul>
+
+    <hr>
+    <div class="center">
+        <h4>ENTRE EM CONTATO!</h4>
+
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" onkeyup='validaNome()'>
+        <div id="txtNome"></div>
+        <br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" onkeyup='validaEmail()'>
+        <div id="txtEmail"></div>
+        <br>
+        <label for="assunto">Assunto:</label><br>
+        <textarea name="duvida" id="assunto" cols="22" rows="8"></textarea>
+        <br>
+        <br>
+    </div>
+
+    <hr>
+    <footer>
+        <div class="desfecho">
+            <div class="center" style="font-size: 12px;">
+                <p>&copy Mariana Campos | Todos os direitos reservados.</p>
+            </div>
+        
+            <div class="bot">
+            <a href="https://www.linkedin.com/in/mariana-campos-br/" target="_blank">
+                <img class="tm-social" src="assets/img/linkedin.png" 
+                alt="Ícone do Linkedin.">
+            </a>
+
+            <a href="https://github.com/marianac-campos" target="_blank">
+                <img class="tm-social" src="assets/img/github.png" 
+                alt="Ícone do GitHub.">
+            </a>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+</body>

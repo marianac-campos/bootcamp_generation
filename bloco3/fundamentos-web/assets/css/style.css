@@ -1,0 +1,59 @@
+body {
+    background-color: aliceblue;
+    font-family: verdana;
+  }
+
+.center {
+    text-align: center;
+}
+
+.pad-30 {
+    border: 30px;
+}
+
+.button {
+    color: aliceblue;
+    background: #08172E;
+    cursor: pointer; /*alterar o cursor*/
+    letter-spacing: 2px; /* espaçamento das letras */
+    padding: 22px 48px;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    color: aqua;
+}
+
+.img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tm-social {
+    width: 24px;
+    right: 24px;
+
+    padding: 4px;
+}
+
+.desfecho {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#menu li {
+    display: inline;
+    padding: 32px;
+
+    letter-spacing: 3px;
+}
+
+#menu li a {
+    text-decoration: none;
+}
+
+#menu li a:hover {
+    color: aqua;
+}
