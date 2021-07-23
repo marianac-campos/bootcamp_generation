@@ -1,3 +1,9 @@
+/* <p>JavaScript can show hidden HTML elements.</p>
+
+<p id="demo" style="display:none">Hello JavaScript!</p>
+
+<button type="button" onclick="document.getElementById('demo').style.display='block'">Click Me!</button> */
+
 let nome = document.querySelector('#nome')
 let email = document.querySelector('#email')
 let assunto = document.querySelector('#assunto')
@@ -28,4 +34,11 @@ function validaEmail() {
     } else {
         txtEmail.innerHTML = ""
     }
+}
+
+function validaAssunto() {
+
+    let txtAssunto = document.querySelector('#txtAssunto')
+
+    if()
 }
