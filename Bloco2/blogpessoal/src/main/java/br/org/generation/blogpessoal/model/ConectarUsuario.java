@@ -2,11 +2,23 @@ package br.org.generation.blogpessoal.model;
 
 public class ConectarUsuario {
 	
+	private Long id;
 	private String nome;
 	private String login;
 	private String senha;
 	private String token;
+	private String foto;
+	private String tipo;
+	
+	//get and set id
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+		
 	
 	//get and set name 
 	public String getNome() {
@@ -42,5 +54,23 @@ public class ConectarUsuario {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+	
+	//get and set photo
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
+	//get and set type
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }

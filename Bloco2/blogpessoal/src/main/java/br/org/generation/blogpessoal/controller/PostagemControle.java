@@ -22,7 +22,7 @@ import br.org.generation.blogpessoal.service.PostagemServico;
 //Receive requests and use the appropriate method for each one
 @RestController
 @RequestMapping("/postagens")
-@CrossOrigin("*") //define where the address will come from
+@CrossOrigin(origins = "*", allowedHeaders = "*") //define where the address will come from
 public class PostagemControle {
 
 	//dependency injection

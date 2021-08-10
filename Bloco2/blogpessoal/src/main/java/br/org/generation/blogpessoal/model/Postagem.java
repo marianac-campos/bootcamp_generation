@@ -12,7 +12,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -24,12 +23,10 @@ public class Postagem {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@NotEmpty(message = "O atributo título é obrigatório!")
-	@Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 05 e no máximo 100 caracteres!")
+	@NotEmpty
 	private String titulo;
 	
-	@NotEmpty(message="O atributo texto é obrigatório!")
-	@Size(min=15, max=500, message = "O atributo texto deve conter no mínimo 15 e no máximo 500 caracteres!")
+	@NotEmpty
 	private String texto;
 	
 	@Temporal(TemporalType.TIMESTAMP) //TIMESTAMP = Go get the system's time

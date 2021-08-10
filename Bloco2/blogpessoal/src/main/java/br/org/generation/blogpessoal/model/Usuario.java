@@ -26,22 +26,27 @@ public class Usuario {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@NotEmpty(message = "O atributo nome é obrigatório!")
-	@Size(min = 5, max = 100, message = "O atributo nome deve conter no mínimo 05 e no máximo 100 caracteres!")
+	@NotEmpty
+	@Size(min = 5, max = 100)
 	private String nome;
-	
-	@NotEmpty(message = "O atributo login é obrigatório!")
-	@Email(message = "O atributo login deve ser um email!")
-	private String login;
-	
-	@NotEmpty(message = "O atributo senha é obrigatório")
-	@Size(min = 8, message = "O atributo senha deve ter no mínimo 8 caracteres")
-	private String senha;
 	
 	@Column(name = "dtnascimento")
 	@JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dataNascimento; 
 	
+	@NotEmpty
+	@Email
+	private String login;
+	
+	@NotEmpty
+	@Size(min = 8)
+	private String senha;
+	
+	private String foto;
+	
+	@NotEmpty
+	private String tipo;
+		
 	@OneToMany(mappedBy = "usuario", cascade=CascadeType.REMOVE)  //CascadeType.REMOVE will remove all other objects with type "user"
 	@JsonIgnoreProperties("usuario") //We will use the @JsonIgnoreProperties annotation so that there is no recursion when getting the resources
 	private List<Postagem> postagem;
@@ -105,5 +110,23 @@ public class Usuario {
 
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
+	}
+	
+	//get and set photo
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
+	//get and set type
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }

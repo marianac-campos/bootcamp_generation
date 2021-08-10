@@ -2,6 +2,7 @@ package br.org.generation.blogpessoal.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -10,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @EnableWebSecurity //add web security
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -37,8 +39,17 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
+		.antMatchers("/**").permitAll()
 		.antMatchers("/usuario/cadastrar").permitAll()
 		.antMatchers("/usuario/logar").permitAll()
+		.antMatchers(HttpMethod.GET, "/postagens").permitAll()
+	    .antMatchers(HttpMethod.GET, "/tema").permitAll()
+	    .antMatchers(HttpMethod.POST, "/postagens").permitAll()
+	    .antMatchers(HttpMethod.POST, "/tema").permitAll()
+	    .antMatchers(HttpMethod.PUT, "/postagens").permitAll()
+	    .antMatchers(HttpMethod.PUT, "/tema").permitAll()
+	    .antMatchers(HttpMethod.DELETE, "/postagens").permitAll()
+	    .antMatchers(HttpMethod.DELETE, "/tema").permitAll()
 		.anyRequest().authenticated()
 		.and().httpBasic()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
