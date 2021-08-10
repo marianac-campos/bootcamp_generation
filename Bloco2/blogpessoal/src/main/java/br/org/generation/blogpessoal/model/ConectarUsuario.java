@@ -2,7 +2,7 @@ package br.org.generation.blogpessoal.model;
 
 public class ConectarUsuario {
 	
-	private Long id;
+	private long id;
 	private String nome;
 	private String login;
 	private String senha;
@@ -11,7 +11,7 @@ public class ConectarUsuario {
 	private String tipo;
 	
 	//get and set id
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
