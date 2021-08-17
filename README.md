@@ -7,7 +7,7 @@ Para facilitar a aprendizagem, houve a separação do conteúdo em três partes 
 
 * [Bloco 1](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco1)
 * [Bloco 2](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco2)
-* [Bloco 3](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco3)
+* [Bloco 3](https://github.com/marianac-campos/bootcamp_generation/tree/main/bloco3)
 
 ##### BLOCO 1
 Como primeiro *bloco*, foi visto todas as **habilidades** para iniciarmos na carreira de desenvolvedor. 
