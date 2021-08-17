@@ -1,4 +1,4 @@
-![img logo](https://i.imgur.com/OBDNN3S.png)
+![img banner](https://i.imgur.com/OBDNN3S.png)
 
 - Introdução ao MySQL;
 - Spring Boot;
