@@ -15,8 +15,9 @@
 ---
 
 ### SOBRE O BLOCO II 📝
-#### Neste *bloco* foi aprendido tudo para construir uma **estrutura de banco de dados relacional**, utilizando o sistema de gerenciamento de banco de dados ***MySQL***. Além disso, começamos a desenvolver o [Blog Pessoal](https://github.com/marianac-campos/Blog_Pessoal.v3), um projeto onde iriamos desenvolver o backend neste bloco e o front no [bloco 3](https://github.com/marianac-campos/bootcamp_generation/tree/main/bloco3).
-Para estruturar nossa API, utilizamos o framework **Spring Boot** e a interface de programação de aplicações web, **API RESTful**. 
+#### Neste *bloco* foi aprendido tudo para construir uma **estrutura de banco de dados relacional**, utilizando o sistema de gerenciamento de banco de dados ***MySQL*** e, além disso, tivemos uma introdução e fundamentos sobre desenvolvimento Web.
+Para fixar o que foi aprendido, começamos a desenvolver o [Blog Pessoal](https://github.com/marianac-campos/Blog_Pessoal.v3), um projeto onde iriamos aprender a criar o backend neste bloco e o front no [bloco 3](https://github.com/marianac-campos/bootcamp_generation/tree/main/bloco3).
+E para estruturar a API, aprendendo e utilizamos o framework **Spring Boot** e a interface de programação de aplicações web, **API RESTful**. 
 
 ----
 
