@@ -22,4 +22,4 @@ Para estruturar nossa API, utilizamos o framework **Spring Boot** e a interface 
 
 ### TECNOLOGIAS UTILIZADAS 🛠
 
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=black&"> <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringE&logoColor=white&">
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white&"> <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=Spring&logoColor=white&">
