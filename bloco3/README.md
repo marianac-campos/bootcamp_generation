@@ -1,6 +1,6 @@
 ![Img Logo](https://i.imgur.com/OBDNN3S.png)
 
-## Sobre cada Bloco 
+## Veja sobre cada bloco 👁‍🗨 
 
 * [Bloco 1](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco1)
 * [Bloco 2](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco2)
