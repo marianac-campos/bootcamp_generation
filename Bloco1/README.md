@@ -23,5 +23,5 @@ Durante o bloco além da parte teórica de lógica de programação realizamos a
 
 ### TECNOLOGIAS UTILIZADAS 🛠
 
-<img src="https://img.shields.io/static/v1?message=Eclipse IDE&color=2C2455&style=for-the-badge&logo=EclipseIDE">
+<img src="https://img.shields.io/static/v1?label=Eclipse IDE&color=2C2455&style=for-the-badge&logo=EclipseIDE">
 
