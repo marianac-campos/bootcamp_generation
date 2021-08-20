@@ -1,6 +1,6 @@
 ![img banner](https://i.imgur.com/s2PEvft.png)
 
-##Sobre cada Bloco 
+## Conheça Cada Bloco 👁‍
 
 * [Bloco 1](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco1)
 * [Bloco 2](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco2)
