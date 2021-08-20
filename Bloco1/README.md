@@ -23,6 +23,6 @@ Durante o bloco além da parte teórica de lógica de programação realizamos a
 
 ### TECNOLOGIAS UTILIZADAS 🛠
 
-<img src="https://img.shields.io/badge/Portugol Studio-FFC200?style=for-the-badge&logo=Instapaper&logoColor=white&">
-<img src="https://img.shields.io/badge/Eclipse IDE-2c2455?style=for-the-badge&logo=EclipseIDE&logoColor=white&">
+<img src="https://img.shields.io/badge/Portugol Studio-FFC200?style=for-the-badge&logo=Instapaper&logoColor=black&"> <img src="https://img.shields.io/badge/Eclipse IDE-2c2455?style=for-the-badge&logo=EclipseIDE&logoColor=white&">
+
 
