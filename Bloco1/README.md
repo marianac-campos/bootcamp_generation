@@ -1,6 +1,6 @@
 ![img banner](https://i.imgur.com/nPXv75w.png)
 
-## Principais Tópicos 📝
+## Principais Tópicos 📌
 
 - Metodologia SCRUM
 - Introdução a Lógica de Programação
@@ -14,12 +14,14 @@
 
 ---
 
-### SOBRE O BLOCO I
+### SOBRE O BLOCO I 📝
 #### Como primeiro *bloco*, foi visto todas as **habilidades** para iniciarmos na carreira de desenvolvedor.
 
 Focamos na **Metodologia Ágil SCRUM**, **lógica de programação**, a **linguagem de programação Java** e o paradigma de **Programação Orientada a Objeto**(POO). 
 Para começar, utilizamos o framework Portugol Studio afim de entender o básico de programação e a lógica por trás dela e logo em seguida, utilizando o IDE Eclipse para apredermos sobre **Java** e **POO**. 
 Durante o bloco além da parte teórica de lógica de programação realizamos alguns exercícios que estará disponível nesse repositório.
+
+----
 
 ### TECNOLOGIAS UTILIZADAS 🛠
 
