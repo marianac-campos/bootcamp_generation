@@ -15,7 +15,7 @@
 ---
 
 ### SOBRE O BLOCO II 📝
-#### Para finalizar, no *bloco 3*, aprendendo sobre Fundamentos Web e conhecemos tecnologias imprescindíveis para o desenvolvimento do frontend.
+#### Para finalizar, no *bloco 3*, vimos sobre Fundamentos Web e conhecemos tecnologias imprescindíveis para o desenvolvimento do frontend.
 De começo, aprendemos a **construir o frontend de uma aplicação web**, utilizando ***HTML5*** para a marcação do conteúdo, ***CSS3*** para a estilização da página e ***JavaScript*** para a interação com o usuário. Para facilitar a montagem, foi apresentado o framework **BootStrap**.
 Para fixar o que foi aprendido, além de algumas atividades realizadas, finalizamos o [Blog Pessoal](https://github.com/marianac-campos/Blog_Pessoal.v3), pelo qual, para estruturamos, utilizamos o framework Angular para facilitar a montagem do site e fazermos a ligação com o backend que foi desenvolvido no [bloco 2](https://github.com/marianac-campos/bootcamp_generation/tree/main/Bloco2).
 
