@@ -21,6 +21,10 @@ Focamos na **Metodologia Ágil SCRUM**, **lógica de programação**, a **lingua
 Para começar, utilizamos o framework Portugol Studio afim de entender o básico de programação e a lógica por trás dela e logo em seguida, utilizando o IDE Eclipse para apredermos sobre **Java** e **POO**. 
 Durante o bloco além da parte teórica de lógica de programação realizamos alguns exercícios que estará disponível nesse repositório.
 
+#### PROJETO FINAL 🚀
+
+Ao final do bloco, foi proposto para que, em grupo, criássemos uma aplicação para contribuir com as **ODS de número 3 da agenda 2030** e que desenvolvêssemos utilizando apenas **Java**. Para mais informações e conhecer o projeto [clique aqui](https://github.com/marianac-campos/Esban.jar_Saude).
+
 ----
 
 ### TECNOLOGIAS UTILIZADAS 🛠
